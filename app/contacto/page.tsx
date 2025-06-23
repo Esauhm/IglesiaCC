@@ -3,7 +3,7 @@
 import { Facebook, Instagram, Youtube } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
+
 
 const TikTokIcon = () => (
   <svg
@@ -19,28 +19,7 @@ const TikTokIcon = () => (
 
 
 export default function Contacto() {
-  const [videoId, setVideoId] = useState("")
 
-  useEffect(() => {
-    const fetchLatestVideo = async () => {
-      try {
-        const res = await fetch("https://www.youtube.com/feeds/videos.xml?channel_id=UCFJ-5_F-cJk-pz3LqOwG9BQ")
-        const text = await res.text()
-        const parser = new DOMParser()
-        const xml = parser.parseFromString(text, "text/xml")
-        const firstEntry = xml.querySelector("entry > link")
-        const url = firstEntry?.getAttribute("href")
-        if (url) {
-          const id = new URL(url).searchParams.get("v")
-          if (id) setVideoId(id)
-        }
-      } catch (error) {
-        console.error("No se pudo obtener el video:", error)
-      }
-    }
-
-    fetchLatestVideo()
-  }, [])
 
   const redes = [
     {

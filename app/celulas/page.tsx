@@ -1,6 +1,6 @@
 import { MapPin, Clock, Users, Heart, Home, Building } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+
 
 export default function CelulasPage() {
   const celulas = [
