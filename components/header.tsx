@@ -14,21 +14,20 @@ export default function Header() {
     { name: "Ubicación", href: "/ubicacion" },
     { name: "Radio", href: "/radio" },
     { name: "Células de Crecimiento", href: "/celulas" },
-    { name: "Contacto", href: "/contacto" },
+    { name: "Redes Sociales", href: "/contacto" },
   ]
 
   const otrosItems = [
     { name: "Hogar", href: "/otros/hogar" },
     { name: "La Finca", href: "/otros/finca" },
-    { name: "El Colegio", href: "/otros/colegio" },
   ]
 
   return (
-    <header className="bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 text-white shadow-lg">
+    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/30 text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 no-underline">
+          <Link href="/" className="flex items-center space-x-2 no-underline text-white hover:text-blue-200">
             <Church className="h-8 w-8" />
             <span className="text-xl font-bold">Iglesia Centro Cristiano</span>
           </Link>
@@ -36,7 +35,11 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
             {navigation.map((item) => (
-              <Link key={item.name} href={item.href} className="hover:text-blue-200 transition-colors no-underline">
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-white hover:text-gray-100 hover:bg-white/10 px-3 py-1 rounded transition-colors no-underline"
+              >
                 {item.name}
               </Link>
             ))}
@@ -44,10 +47,10 @@ export default function Header() {
             {/* Dropdown para Otros */}
             <div className="relative">
               <button
-                className="flex items-center space-x-1 hover:text-blue-200 transition-colors no-underline"
+                className="flex items-center space-x-1 text-white hover:text-gray-100 hover:bg-white/10 px-3 py-1 rounded transition-colors"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
-                <span className="text-inherit">Otros</span>
+                <span>Otros</span>
                 <ChevronDown className="h-4 w-4" />
               </button>
 
@@ -81,7 +84,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-blue-700">
+          <div className="md:hidden py-4 border-t border-white/20">
             <nav className="flex flex-col space-y-2">
               {navigation.map((item) => (
                 <Link
@@ -113,5 +116,6 @@ export default function Header() {
         )}
       </div>
     </header>
+
   )
 }

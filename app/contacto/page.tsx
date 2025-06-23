@@ -1,161 +1,99 @@
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Send } from "lucide-react"
+"use client"
+
+import { Facebook, Instagram, Youtube } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+import { useEffect, useState } from "react"
+
+const TikTokIcon = () => (
+  <svg
+    className="h-12 w-12 text-black mx-auto mb-2"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path d="M12.75 2h3a6 6 0 0 0 6 6v3a9 9 0 1 1-9-9z" />
+  </svg>
+)
+
+
 
 export default function Contacto() {
+  const [videoId, setVideoId] = useState("")
+
+  useEffect(() => {
+    const fetchLatestVideo = async () => {
+      try {
+        const res = await fetch("https://www.youtube.com/feeds/videos.xml?channel_id=UCFJ-5_F-cJk-pz3LqOwG9BQ")
+        const text = await res.text()
+        const parser = new DOMParser()
+        const xml = parser.parseFromString(text, "text/xml")
+        const firstEntry = xml.querySelector("entry > link")
+        const url = firstEntry?.getAttribute("href")
+        if (url) {
+          const id = new URL(url).searchParams.get("v")
+          if (id) setVideoId(id)
+        }
+      } catch (error) {
+        console.error("No se pudo obtener el video:", error)
+      }
+    }
+
+    fetchLatestVideo()
+  }, [])
+
+  const redes = [
+    {
+      icon: <Facebook className="h-12 w-12 text-blue-600 mx-auto mb-2" />,
+      title: "Facebook",
+      description: "Síguenos para noticias y eventos",
+      text: "Mantente al día con nuestras actividades, eventos especiales y mensajes inspiradores.",
+      button: "Seguir en Facebook",
+      url: "https://www.facebook.com/share/1NpscNMMe4/",
+      color: "bg-blue-600 hover:bg-blue-700",
+    },
+    {
+      icon: <Instagram className="h-12 w-12 text-pink-600 mx-auto mb-2" />,
+      title: "Instagram",
+      description: "Fotos y momentos especiales",
+      text: "Mira las fotos de nuestros eventos, actividades y momentos especiales de la comunidad.",
+      button: "Seguir en Instagram",
+      url: "https://www.instagram.com/mcc_sv?igsh=MWk3NTJpZ2hpeDR5eA==",
+      color: "bg-pink-600 hover:bg-pink-700",
+    },
+    {
+      icon: <Youtube className="h-12 w-12 text-red-600 mx-auto mb-2" />,
+      title: "YouTube",
+      description: "Predicaciones y música",
+      text: "Accede a nuestras predicaciones, música de adoración y eventos en vivo.",
+      button: "Suscribirse",
+      url: "https://youtube.com/@ministeriocentrocristianosv?si=hodW-qfRr7WBmM7O",
+      color: "bg-red-600 hover:bg-red-700",
+    },
+    {
+      icon: <TikTokIcon/>,
+      title: "TikTok",
+      description: "Contenido corto y poderoso",
+      text: "Disfruta de clips, predicaciones breves y mensajes que impactan.",
+      button: "Seguir en TikTok",
+      url: "https://www.tiktok.com/@mccsantaana?_t=ZM-8xQmMvCEbnM&_r=1", // cambia si tienes otra URL real
+      color: "bg-black hover:bg-gray-900 text-white",
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contacto</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Estamos aquí para servirte. No dudes en contactarnos para cualquier consulta o necesidad
-          </p>
-        </div>
-      </section>
-
-      {/* Información de Contacto */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Formulario de Contacto */}
-            <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-8">Envíanos un Mensaje</h2>
-
-              <Card className="border-blue-200">
-                <CardHeader>
-                  <CardTitle className="text-blue-900">Formulario de Contacto</CardTitle>
-                  <CardDescription>Completa el formulario y nos pondremos en contacto contigo pronto</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="nombre">Nombre</Label>
-                      <Input id="nombre" placeholder="Tu nombre completo" />
-                    </div>
-                    <div>
-                      <Label htmlFor="telefono">Teléfono</Label>
-                      <Input id="telefono" placeholder="Tu número de teléfono" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="tu@email.com" />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="asunto">Asunto</Label>
-                    <Input id="asunto" placeholder="¿En qué podemos ayudarte?" />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="mensaje">Mensaje</Label>
-                    <Textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." className="min-h-[120px]" />
-                  </div>
-
-                  <Button className="w-full bg-blue-700 hover:bg-blue-800">
-                    <Send className="h-4 w-4 mr-2" />
-                    Enviar Mensaje
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Información de Contacto */}
-            <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-8">Información de Contacto</h2>
-
-              <div className="space-y-6">
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-900 flex items-center gap-2">
-                      <Phone className="h-5 w-5" />
-                      Teléfonos
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2 text-gray-600">
-                      <p>
-                        <strong>Oficina Principal:</strong> +1 (555) 123-4567
-                      </p>
-                      <p>
-                        <strong>Pastor Principal:</strong> +1 (555) 123-4568
-                      </p>
-                      <p>
-                        <strong>Emergencias:</strong> +1 (555) 123-4569
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-900 flex items-center gap-2">
-                      <Mail className="h-5 w-5" />
-                      Correos Electrónicos
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2 text-gray-600">
-                      <p>
-                        <strong>General:</strong> info@iglesia.com
-                      </p>
-                      <p>
-                        <strong>Pastor:</strong> pastor@iglesia.com
-                      </p>
-                      <p>
-                        <strong>Oración:</strong> oracion@iglesia.com
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-900 flex items-center gap-2">
-                      <MapPin className="h-5 w-5" />
-                      Dirección
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-gray-600">
-                      <p>Calle Principal #123</p>
-                      <p>Colonia Centro</p>
-                      <p>Ciudad, Estado 12345</p>
-                      <p>País</p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-900 flex items-center gap-2">
-                      <Clock className="h-5 w-5" />
-                      Horarios de Oficina
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2 text-gray-600">
-                      <p>
-                        <strong>Lunes - Viernes:</strong> 9:00 AM - 5:00 PM
-                      </p>
-                      <p>
-                        <strong>Sábado:</strong> 9:00 AM - 2:00 PM
-                      </p>
-                      <p>
-                        <strong>Domingo:</strong> 8:00 AM - 12:00 PM
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
+      {/* Hero con imagen */}
+      <section className="relative h-[450px] text-white">
+        <img
+          src="/imagenes/redes.jpg"
+          alt="Ubicación"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        <div className="relative z-10 container mx-auto h-full flex flex-col items-center justify-center px-4 text-center">
+          <h1 className="text-6xl font-bold mb-6">Redes Sociales</h1>
+          <p className="text-xl max-w-3xl mx-auto">Sigue nuestras redes sociales para mantenerte informado.</p>
         </div>
       </section>
 
@@ -164,98 +102,44 @@ export default function Contacto() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Síguenos en Redes Sociales</h2>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card className="text-center bg-white border-blue-200 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Facebook className="h-12 w-12 text-blue-600 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">Facebook</CardTitle>
-                <CardDescription>Síguenos para noticias y eventos</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Mantente al día con nuestras actividades, eventos especiales y mensajes inspiradores.
-                </p>
-                <Button className="bg-blue-600 hover:bg-blue-700">Seguir en Facebook</Button>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center bg-white border-blue-200 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Instagram className="h-12 w-12 text-pink-600 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">Instagram</CardTitle>
-                <CardDescription>Fotos y momentos especiales</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Mira las fotos de nuestros eventos, actividades y momentos especiales de la comunidad.
-                </p>
-                <Button className="bg-pink-600 hover:bg-pink-700">Seguir en Instagram</Button>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center bg-white border-blue-200 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Youtube className="h-12 w-12 text-red-600 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">YouTube</CardTitle>
-                <CardDescription>Predicaciones y música</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Accede a nuestras predicaciones, música de adoración y eventos en vivo.
-                </p>
-                <Button className="bg-red-600 hover:bg-red-700">Suscribirse</Button>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {redes.map(({ icon, title, description, text, button, color, url }, idx) => (
+              <Card
+                key={idx}
+                className="text-center bg-white border-blue-200 p-6 shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group"
+              >
+                <CardHeader>
+                  <div className="transition-transform group-hover:scale-110">{icon}</div>
+                  <CardTitle className="text-blue-900">{title}</CardTitle>
+                  <CardDescription>{description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">{text}</p>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    <Button className={`${color}`}>{button}</Button>
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Mapa */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Cómo Llegar</h2>
-
-          <Card className="border-blue-200 max-w-4xl mx-auto">
-            <CardHeader>
-              <CardTitle className="text-blue-900 text-center">Nuestra Ubicación</CardTitle>
-              <CardDescription className="text-center">
-                Estamos ubicados en el corazón de la ciudad, fácil acceso en transporte público
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <MapPin className="h-16 w-16 mx-auto mb-4" />
-                  <p className="text-lg font-semibold">Mapa Interactivo</p>
-                  <p>Calle Principal #123, Colonia Centro</p>
-                  <p className="text-sm mt-2">Aquí se mostraría el mapa de Google Maps</p>
-                </div>
-              </div>
-              <div className="mt-6 text-center">
-                <Button className="bg-blue-700 hover:bg-blue-800">
-                  <MapPin className="h-4 w-4 mr-2" />
-                  Ver en Google Maps
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+      {/* Último video */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">¿Necesitas Oración o Consejería?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Nuestros pastores están disponibles para orar contigo y brindarte consejería espiritual
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
-              Solicitar Oración
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
-              Agendar Consejería
-            </Button>
+          <h2 className="text-3xl font-bold text-blue-900 mb-8">Predicaciones Recientes</h2>
+          <div className="w-full max-w-4xl mx-auto">
+            <div className="relative w-full h-[450px]">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                src="https://www.youtube.com/embed?listType=playlist&amp;list=PLgFS4sQxyt5Ft5M2ozyS_mwZ8Ib-hjbkC"
+                title="Último video del canal"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>

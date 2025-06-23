@@ -1,172 +1,179 @@
-import { Users, Heart, Book, HandIcon as Hands, Calendar } from "lucide-react"
-import { Button } from "@/components/ui/button"
+"use client"
+
+import { Users, Heart, Book, HandIcon as Hands } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState } from "react"
+import { PlayCircle } from "lucide-react"
+
+
+type VideoCardProps = {
+  previewImage: string
+  videoId: string
+}
+
+function VideoCard({ previewImage, videoId }: VideoCardProps) {
+  const [play, setPlay] = useState(false)
+
+  return (
+    <div
+      className="relative aspect-[9/16] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+      onClick={() => setPlay(true)}
+    >
+      {!play ? (
+        <>
+          <img
+            src={previewImage}
+            alt="Vista previa"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-90"
+          />
+          <PlayCircle className="w-10 h-10 text-white" />
+
+        </>
+      ) : (
+        <iframe
+          src={`https://drive.google.com/file/d/${videoId}/preview`}
+          allow="autoplay"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+        ></iframe>
+      )}
+    </div>
+  )
+}
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Carrusel de Imágenes */}
       <div id="heroCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="40000">
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" className="active"></button>
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-        </div>
+
 
         <div className="carousel-inner">
-          <div className="carousel-item active h-[500px]">
-            <div className="relative bg-gradient-to-r h-[500px] from-blue-950 via-blue-900 to-blue-800 text-white py-20">
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="relative container mx-auto px-4 text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 mt-5">Bienvenidos a Nuestra Iglesia</h1>
-                <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                  Un lugar donde encontrarás amor, esperanza y comunidad en El Espiritu Santo
-                </p>
-              </div>
-            </div>
-          </div>
+          {/* Slide 1 - Bienvenida */}
+          <div className="carousel-item active relative h-[550px]">
+            {/* Imagen de fondo que se ajusta completamente */}
+            <img
+              src="/imagenes/portada.png"
+              alt="Bienvenida"
+              className="absolute inset-0 w-full h-[100%] object-cover z-0"
+            />
 
-          <div className="carousel-item h-[500px]">
-            <div className="relative bg-gradient-to-r from-blue-900 h-[500px] via-blue-800 to-blue-700 text-white py-20">
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="relative container mx-auto px-4 text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6">Células de Crecimiento</h1>
-                <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                  Crece en comunidad y fortalece tu fe en grupos pequeños
-                </p>
-                <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
-                  Conocer Células
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          <div className="carousel-item h-[500px]">
-            <div className="relative bg-gradient-to-r from-blue-800 h-[500px] via-blue-900 to-blue-950 text-white py-20">
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="relative container mx-auto px-4 text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6">Radio Bendición</h1>
-                <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                  Escucha música cristiana y predicaciones las 24 horas
-                </p>
-                <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
-                  Escuchar Ahora
-                </Button>
-              </div>
-            </div>
+            {/* Contenido */}
+            <div className="relative z-20 container mx-auto px-4 text-center text-white py-20"></div>
           </div>
         </div>
-
-        <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon"></span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-          <span className="carousel-control-next-icon"></span>
-        </button>
       </div>
 
       {/* Actividades de la Semana */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Actividades de la Semana</h2>
-            <p className="text-gray-600 text-lg">Únete a nuestras actividades y fortalece tu fe</p>
-          </div>
+      <section className="bg-gray-50 text-gray-800 py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Actividades de la Semana</h2>
+          <p className="text-lg text-black-100 mb-10">
+            Únete a nuestras actividades y fortalece tu fe
+          </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <Card className="border-blue-200 hover:shadow-lg transition-shadow">
-              <img src="/imagenes/Domingo.jpeg" alt="Culto Dominical" className="w-full h-80 object-cover rounded-t-md" />
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-blue-700" />
-                  <CardTitle className="text-blue-900">Culto Dominical</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-2">Domingo 09:00 AM - 11:00 PM</p>
-                <p className="text-sm text-gray-500">Adoración, predicación y alabanza</p>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1 - Lunes */}
+            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg">
+              <img src="/imagenes/Lunes.jpeg" alt="Altar Familiar" className="w-full h-60 object-cover" />
+              <div className="p-4 text-left">
+                <h3 className="text-xl font-semibold text-gray-900 mb-1">Altar Familiar</h3>
+                <p className="text-sm text-gray-700">Lunes</p>
+                <p className="text-sm text-gray-600 mt-2">Un tiempo para buscar la presencia de Dios juntos en familia</p>
+              </div>
+            </div>
 
-            {/* Card 2 */}
-            <Card className="border-blue-200 hover:shadow-lg transition-shadow">
-              <img src="/imagenes/Martes.jpeg" alt="Culto de Departamentos" className="w-full h-80 object-cover rounded-t-md" />
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Heart className="h-5 w-5 text-blue-700" />
-                  <CardTitle className="text-blue-900">Culto de Departamentos</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-2">Martes 6:00 PM - 7:30 PM</p>
-                <p className="text-sm text-gray-500">Reunión con jóvenes, adultos y niños</p>
-              </CardContent>
-            </Card>
+            {/* Card 2 - Domingo */}
+            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg">
+              <img src="/imagenes/Domingo.jpeg" alt="Culto Dominical" className="w-full h-60 object-cover" />
+              <div className="p-4 text-left">
+                <h3 className="text-xl font-semibold text-gray-900 mb-1">Culto Dominical</h3>
+                <p className="text-sm text-gray-700">Domingo 09:00 AM - 11:00 PM</p>
+                <p className="text-sm text-gray-600 mt-2">Adoración, predicación y alabanza</p>
+              </div>
+            </div>
 
-            {/* Card 3 */}
-            <Card className="border-blue-200 hover:shadow-lg transition-shadow">
-              <img src="/imagenes/Jueves.jpeg" alt="Estudio Bíblico" className="w-full h-80 object-cover rounded-t-md" />
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-blue-700" />
-                  <CardTitle className="text-blue-900">Estudio Bíblico</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-2">Jueves 6:00 PM - 7:30 PM</p>
-                <p className="text-sm text-gray-500">Profundizando en la Palabra de Dios</p>
-              </CardContent>
-            </Card>
-          </div>
+            {/* Card 3 - Martes */}
+            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg">
+              <img src="/imagenes/Martes.jpeg" alt="Culto de Departamentos" className="w-full h-60 object-cover" />
+              <div className="p-4 text-left">
+                <h3 className="text-xl font-semibold text-gray-900 mb-1">Culto de Departamentos</h3>
+                <p className="text-sm text-gray-700">Martes 6:00 PM - 7:30 PM</p>
+                <p className="text-sm text-gray-600 mt-2">Reunión con jóvenes, adultos y niños</p>
+              </div>
+            </div>
 
-          {/* Card adicional centrada abajo */}
-          <div className="mt-8 flex justify-center">
-            <Card className="w-full max-w-md border-blue-200 hover:shadow-lg transition-shadow">
-              <img src="/imagenes/Lunes.jpeg" alt="Noche de Oración" className="w-full h-80 object-cover rounded-t-md" />
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-blue-700" />
-                  <CardTitle className="text-blue-900">Altar Familiar</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-2">Lunes</p>
-                <p className="text-sm text-gray-500">Un tiempo para buscar la presencia de Dios juntos en familia</p>
-              </CardContent>
-            </Card>
+            {/* Card 4 - Jueves */}
+            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg">
+              <img src="/imagenes/Jueves.jpeg" alt="Estudio Bíblico" className="w-full h-60 object-cover" />
+              <div className="p-4 text-left">
+                <h3 className="text-xl font-semibold text-gray-900 mb-1">Estudio Bíblico</h3>
+                <p className="text-sm text-gray-700">Jueves 6:00 PM - 7:30 PM</p>
+                <p className="text-sm text-gray-600 mt-2">Profundizando en la Palabra de Dios</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
 
-      {/* Información Importante */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
-        {/* Historia */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-blue-900 mb-8 text-center">Nuestra Historia</h2>
-              <div className="prose prose-lg max-w-none text-gray-600">
-                <p className="mb-6">
-                  Nuestra iglesia fue fundada en 1985 con el propósito de crear una comunidad donde las personas pudieran
-                  encontrar a Dios, crecer en su fe y servir a otros con amor. Durante más de 35 años, hemos sido un faro
-                  de esperanza en nuestra comunidad.
-                </p>
-                <p className="mb-6">
-                  Comenzamos como un pequeño grupo de familias que se reunían en hogares para estudiar la Biblia y orar
-                  juntos. Con el tiempo, Dios bendijo nuestro ministerio y pudimos establecer nuestro templo actual, donde
-                  continuamos creciendo y sirviendo.
-                </p>
-              </div>
-            </div>
+      {/* Sección de Videos */}
+      <section className="py-16 bg-gradient-to-r from-slate-50 to-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Videos de la Iglesia</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <VideoCard
+              previewImage="/imagenes/i3.jpeg"
+              videoId="1VNo8971RZJWnGGXKlK9qMyzDWRyDnnye"
+            />
+            <VideoCard
+              previewImage="/imagenes/i4.jpeg"
+              videoId="1VTGkiwb8ZBUbNO7uQtaDRzm4np2IF36d"
+            />
+            <VideoCard
+              previewImage="/imagenes/i2.jpeg"
+              videoId="1VQCBEHk26m746N0KNt99YnpTS9F1R0Wb"
+            />
+            <VideoCard
+              previewImage="/imagenes/i1.jpeg"
+              videoId="1VOZ8QUTiY-LIt3evG2upHdhEXU5MLzVc"
+            />
           </div>
-        </section>
+        </div>
       </section>
 
-      {/* Misión y Visión */}
-      <section className="py-16 bg-blue-50">
+
+
+      {/* Información Importante */}
+      <section className="py-16 bg-gradient-to-r from-slate-50 to-white">
         <div className="container mx-auto px-4">
+          {/* Título principal */}
+          <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Nuestra Historia</h2>
+
+          {/* Contenido dividido en columnas */}
+          <div className="grid md:grid-cols-2 gap-10 items-center mb-12">
+            {/* Imagen */}
+            <div>
+              <img
+                src="/imagenes/iglesia.png"
+                alt="Historia de la Iglesia"
+                className="w-full rounded-xl shadow-md object-cover"
+              />
+            </div>
+
+            {/* Texto */}
+            <div className="text-gray-600 prose prose-lg max-w-none">
+              <p className="mb-6">
+                Nuestra iglesia fue fundada con el propósito de crear una comunidad centrada en el servicio y en la búsqueda de Dios. Desde sus inicios, ha sido un espacio donde se predica fielmente la Palabra de Dios y se enseña sobre la persona del Espíritu Santo, guiando a las personas a tener una relación viva y transformadora con Él.
+              </p>
+              <p className="mb-6">
+                Actualmente, somos una iglesia apasionada por la adoración, la enseñanza bíblica y la presencia del Espíritu Santo. Nos reunimos no solo para escuchar la Palabra, sino para vivirla día a día, fortaleciendo nuestra fe y edificándonos mutuamente en amor.
+              </p>
+            </div>
+          </div>
+
+          {/* Misión y Visión */}
           <div className="max-w-4xl mx-auto">
             <Card className="bg-white border-blue-200">
               <CardHeader>
@@ -187,76 +194,56 @@ export default function HomePage() {
       </section>
 
 
+
+
+
       {/* Valores */}
-      <section className="py-16">
+      <section className="py-16 from-slate-50 to-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Nuestros Valores</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center border-blue-200 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Users className="h-12 w-12 text-blue-700 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">Comunidad</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm">
-                  Creemos en la importancia de la comunión y el apoyo mutuo entre hermanos.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-blue-200 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Heart className="h-12 w-12 text-blue-700 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">Amor</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm">
-                  El amor de Dios es el fundamento de todo lo que hacemos y enseñamos.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-blue-200 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Book className="h-12 w-12 text-blue-700 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">Verdad</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm">
-                  La Palabra de Dios es nuestra autoridad suprema en fe y práctica.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-blue-200 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Hands className="h-12 w-12 text-blue-700 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">Servicio</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm">Servimos a Dios sirviendo a otros con humildad y generosidad.</p>
-              </CardContent>
-            </Card>
+            {[
+              { Icon: Users, title: "Comunidad", desc: "Creemos en la importancia de la comunión y el apoyo mutuo entre hermanos." },
+              { Icon: Heart, title: "Amor", desc: "El amor de Dios es el fundamento de todo lo que hacemos y enseñamos." },
+              { Icon: Book, title: "Verdad", desc: "La Palabra de Dios es nuestra autoridad suprema en fe y práctica." },
+              { Icon: Hands, title: "Servicio", desc: "Servimos a Dios sirviendo a otros con humildad y generosidad." }
+            ].map(({ Icon, title, desc }, i) => (
+              <Card
+                key={i}
+                className="group text-center border border-blue-100 bg-white rounded-xl p-4 hover:shadow-xl transition-all duration-300"
+              >
+                <CardHeader className="flex flex-col items-center">
+                  <div className="mb-4 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-500">
+                    <Icon className="h-12 w-12 text-blue-700" />
+                  </div>
+                  <CardTitle className="text-blue-900">{title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 text-sm">{desc}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
+
       {/* Liderazgo */}
-      <section className="py-16 bg-blue-50">
+      <section className="py-16 from-slate-50 to-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Nuestros Pastores</h2>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 max-w-4xl mx-auto">
             {/* Pastor */}
-            <Card className="text-center bg-white border-blue-200 w-full max-w-sm">
+            <Card className="text-center bg-white border border-blue-100 shadow-md hover:shadow-xl transition-all duration-300 w-full max-w-sm rounded-xl">
               <CardHeader>
                 <img
                   src="/imagenes/Pastor.jpeg"
                   alt="Pastor Marcos Antonio Amaya Lizama"
-                  className="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-blue-100"
+                  className="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-white shadow-md"
                 />
-                <CardTitle className="text-blue-900">Pastor</CardTitle>
-                <CardDescription>Marcos Antonio Amaya Lizama</CardDescription>
+                <CardTitle className="text-blue-900 text-lg">Pastor</CardTitle>
+                <CardDescription className="text-sm font-semibold">Marcos Antonio Amaya Lizama</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm">
@@ -266,15 +253,15 @@ export default function HomePage() {
             </Card>
 
             {/* Pastora */}
-            <Card className="text-center bg-white border-blue-200 w-full max-w-sm">
+            <Card className="text-center bg-white border border-blue-100 shadow-md hover:shadow-xl transition-all duration-300 w-full max-w-sm rounded-xl">
               <CardHeader>
                 <img
                   src="/imagenes/Pastora.jpeg"
                   alt="Pastora Gloria Amaya"
-                  className="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-blue-100"
+                  className="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-white shadow-md"
                 />
-                <CardTitle className="text-blue-900">Pastora</CardTitle>
-                <CardDescription>Gloria Amaya</CardDescription>
+                <CardTitle className="text-blue-900 text-lg">Pastora</CardTitle>
+                <CardDescription className="text-sm font-semibold">Gloria Amaya</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm">
@@ -285,6 +272,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
 
     </div>
   )

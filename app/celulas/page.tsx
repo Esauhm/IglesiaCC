@@ -5,76 +5,90 @@ import { Button } from "@/components/ui/button"
 export default function CelulasPage() {
   const celulas = [
     {
-      nombre: "Célula Norte",
-      ubicacion: "Casa de la Familia Pérez",
-      direccion: "Av. Norte #456, Colonia Jardines",
-      horario: "Martes 7:00 PM",
-      lider: "Juan y María Pérez",
-      descripcion: "Célula familiar enfocada en el crecimiento espiritual y la comunión.",
+      nombre: "Célula 1",
+      ubicacion: "Familia Salazar",
+      direccion: "Urb. Arizona, contiguo a Parque Jardín Las Flores",
+      horario: "Viernes / 6:30 PM",
+      lider: "Marlene Amaya de López",
+      descripcion: "Reunión en hogar para crecimiento y comunión espiritual.",
       icon: Home,
       color: "blue",
+      imagen: "/imagenes/c1.jpeg",
     },
     {
-      nombre: "Célula Centro",
-      ubicacion: "Salón Comunitario Central",
-      direccion: "Calle Principal #123, Centro",
-      horario: "Jueves 6:30 PM",
-      lider: "Pastor Carlos Rodríguez",
-      descripcion: "Célula para jóvenes y adultos jóvenes con dinámicas modernas.",
+      nombre: "Célula 2",
+      ubicacion: "Familia Colocho",
+      direccion: "Cantón La Empalizada, Carretera al Porvenir.",
+      horario: "Sábado / 5:00 PM",
+      lider: "Odilio López",
+      descripcion: "Encuentro en comunidad para fortalecer la fe.",
       icon: Building,
       color: "navy",
+      imagen: "/imagenes/c2.jpeg",
     },
     {
-      nombre: "Célula Sur",
-      ubicacion: "Casa de la Familia González",
-      direccion: "Calle Sur #789, Colonia Esperanza",
-      horario: "Miércoles 7:30 PM",
-      lider: "Roberto y Ana González",
-      descripcion: "Célula multigeneracional con enfoque en familias.",
+      nombre: "Célula 3",
+      ubicacion: "Familia de Carlos Flores",
+      direccion: "Caserío Copinolito, abajo de la Colonia Santa Leonor.",
+      horario: "Viernes / 6:30 PM",
+      lider: "Jorge García",
+      descripcion: "Célula familiar centrada en la enseñanza bíblica.",
       icon: Home,
       color: "blue",
+      imagen: "/imagenes/c3.jpeg",
     },
     {
-      nombre: "Célula Este",
-      ubicacion: "Centro Comunitario Este",
-      direccion: "Av. Este #321, Colonia Nueva Vida",
-      horario: "Viernes 7:00 PM",
-      lider: "Pastora María López",
-      descripcion: "Célula de mujeres enfocada en el ministerio femenino.",
+      nombre: "Célula 4",
+      ubicacion: "Familia Amaya",
+      direccion: "Urb. San Fernando, una cuadra abajo de multifamiliares Atlás.",
+      horario: "Miércoles / 6:30 PM",
+      lider: "Marcos Amaya",
+      descripcion: "Estudio bíblico con familias del sector San Fernando.",
       icon: Building,
       color: "blue",
+      imagen: "/imagenes/c4.jpeg",
     },
     {
-      nombre: "Célula Oeste",
-      ubicacion: "Casa de la Familia Martínez",
-      direccion: "Calle Oeste #654, Colonia Paz",
-      horario: "Sábado 6:00 PM",
-      lider: "David y Carmen Martínez",
-      descripcion: "Célula para matrimonios y parejas en crecimiento.",
+      nombre: "Célula 5",
+      ubicacion: "Familia Ortíz",
+      direccion: "10 Calle Poniente, entre 18/16 Av. Norte, Casa #40",
+      horario: "Sábados / 4:30 PM",
+      lider: "Claudia de Ortíz",
+      descripcion: "Encuentro para familias.",
       icon: Home,
       color: "navy",
+      imagen: "/imagenes/c5.jpeg",
     },
     {
-      nombre: "Célula Juvenil",
-      ubicacion: "Salón Juvenil de la Iglesia",
-      direccion: "Instalaciones de la Iglesia",
-      horario: "Sábado 4:00 PM",
-      lider: "Pastor de Jóvenes Miguel",
-      descripcion: "Célula especial para adolescentes y jóvenes universitarios.",
+      nombre: "Célula 6",
+      ubicacion: "Familia de Héctor Morán",
+      direccion: "Cantón Caña Brava, Km. 54, Calle Nueva a San Salvador.",
+      horario: "Miércoles / 5:30 PM",
+      lider: "Odilio López",
+      descripcion: "Célula enfocada en la Palabra y comunión familiar.",
       icon: Building,
       color: "blue",
+      imagen: "/imagenes/c6.jpeg",
     },
   ]
 
+
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Células de Crecimiento</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Únete a una célula cerca de ti y crece en comunidad, fe y amor fraternal
-          </p>
+      {/* Hero Section con imagen */}
+      <section className="relative h-[400px] md:h-[530px]">
+        <img
+          src="/imagenes/portada-celulas.jpeg"
+          alt="Células de Crecimiento"
+          className="absolute inset-0 w-full h-full object-cover object-top"
+        />
+
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-4">
+          <div>
+
+          </div>
         </div>
       </section>
 
@@ -90,39 +104,31 @@ export default function CelulasPage() {
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <Card className="border-blue-200 text-center">
-                <CardHeader>
-                  <Users className="h-12 w-12 text-blue-700 mx-auto mb-2" />
-                  <CardTitle className="text-blue-900">Comunión</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">Fortalece lazos de amistad y hermandad cristiana</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-blue-300 text-center">
-                <CardHeader>
-                  <Heart className="h-12 w-12 text-blue-800 mx-auto mb-2" />
-                  <CardTitle className="text-blue-950">Crecimiento</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">Crece espiritualmente a través del estudio bíblico</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-blue-200 text-center">
-                <CardHeader>
-                  <MapPin className="h-12 w-12 text-blue-700 mx-auto mb-2" />
-                  <CardTitle className="text-blue-900">Cercanía</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">Encuentra una célula cerca de tu hogar</p>
-                </CardContent>
-              </Card>
+              {[
+                { icon: Users, title: "Comunión", desc: "Fortalece lazos de amistad y hermandad cristiana" },
+                { icon: Heart, title: "Crecimiento", desc: "Crece espiritualmente a través del estudio bíblico" },
+                { icon: MapPin, title: "Cercanía", desc: "Encuentra una célula cerca de tu hogar" },
+              ].map(({ icon: Icon, title, desc }, idx) => (
+                <Card
+                  key={idx}
+                  className="text-center bg-white border border-blue-200 p-6 shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group"
+                >
+                  <CardHeader className="flex flex-col items-center">
+                    <div className="mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:text-blue-600">
+                      <Icon className="h-12 w-12 text-blue-700 transition-colors duration-300 group-hover:text-blue-600" />
+                    </div>
+                    <CardTitle className="text-blue-900">{title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 text-sm">{desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Lista de Células */}
       <section className="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
@@ -150,14 +156,25 @@ export default function CelulasPage() {
               const colors = colorClasses[celula.color as keyof typeof colorClasses]
 
               return (
-                <Card key={index} className={`bg-white ${colors.border} hover:shadow-lg transition-shadow`}>
+                <Card
+                  key={index}
+                  className={`bg-white ${colors.border} rounded-xl p-6 shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group`}
+                >
                   <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <IconComponent className={`h-8 w-8 ${colors.icon}`} />
-                      <CardTitle className={colors.title}>{celula.nombre}</CardTitle>
+                    <div className="flex items-center gap-3 mb-4 transition-all duration-300 group-hover:text-blue-600">
+                      <IconComponent className={`h-8 w-8 ${colors.icon} group-hover:text-blue-600`} />
+                      <CardTitle className={`${colors.title}`}>{celula.nombre}</CardTitle>
                     </div>
-                    <CardDescription className="font-medium">{celula.ubicacion}</CardDescription>
+
+                    <img
+                      src={celula.imagen}
+                      alt={`Imagen de ${celula.nombre}`}
+                      className="w-full h-48 object-cover rounded-md mt-2 shadow-sm"
+                    />
+
+                    <CardDescription className="font-medium mt-2">{celula.ubicacion}</CardDescription>
                   </CardHeader>
+
                   <CardContent>
                     <div className="space-y-3 mb-4">
                       <div className="flex items-center gap-2 text-gray-600">
@@ -174,35 +191,17 @@ export default function CelulasPage() {
                       </div>
                     </div>
 
-                    <p className="text-gray-600 text-sm mb-4">{celula.descripcion}</p>
-
-                    <Button className={`w-full ${colors.button}`}>Unirse a esta Célula</Button>
+                    <p className="text-gray-600 text-sm mb-2">{celula.descripcion}</p>
                   </CardContent>
                 </Card>
+
               )
             })}
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-blue-950 to-blue-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">¿Quieres Iniciar una Nueva Célula?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Si tienes el corazón para liderar y un lugar donde reunirse, te ayudamos a iniciar una nueva célula en tu
-            área
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
-              Quiero Ser Líder
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
-              Más Información
-            </Button>
-          </div>
-        </div>
-      </section>
+
     </div>
   )
 }

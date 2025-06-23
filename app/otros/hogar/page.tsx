@@ -44,7 +44,6 @@ export default function HogarPage() {
                       <span className="text-gray-700 font-medium">Compañía y comunión cristiana</span>
                     </div>
                   </div>
-                  <Button className="bg-blue-700 hover:bg-blue-800">Conocer Más</Button>
                 </div>
                 <div className="bg-gray-200 min-h-[400px] lg:min-h-full flex items-center justify-center">
                   <div className="text-center text-gray-500">
@@ -152,7 +151,7 @@ export default function HogarPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
+      {/* Testimonios
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Testimonios</h2>
@@ -189,7 +188,7 @@ export default function HogarPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* Call to Action }
       <section className="py-16 bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">¿Cómo Puedes Ayudar?</h2>
@@ -209,7 +208,7 @@ export default function HogarPage() {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }

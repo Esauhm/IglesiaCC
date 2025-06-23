@@ -50,7 +50,6 @@ export default function FincaPage() {
                       <span className="text-gray-700 font-medium">Espacio dedicado a la adoración</span>
                     </div>
                   </div>
-                  <Button className="bg-blue-700 hover:bg-blue-800">Reservar Visita</Button>
                 </div>
               </div>
             </Card>
@@ -106,7 +105,7 @@ export default function FincaPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
+            {/* <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <TreePine className="h-12 w-12 text-blue-700 mb-2" />
                 <CardTitle className="text-blue-900">Caminatas de Oración</CardTitle>
@@ -146,7 +145,7 @@ export default function FincaPage() {
                   belleza natural que Dios nos ha regalado.
                 </p>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </section>
@@ -183,7 +182,7 @@ export default function FincaPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-blue-50 to-white border-blue-200">
+            {/* <Card className="bg-gradient-to-br from-blue-50 to-white border-blue-200">
               <CardHeader>
                 <CardTitle className="text-blue-900">Comedor Principal</CardTitle>
                 <CardDescription>Espacio para compartir alimentos</CardDescription>
@@ -207,13 +206,13 @@ export default function FincaPage() {
                   grupales y recreación sana en familia.
                 </p>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </section>
 
       {/* Próximos Eventos */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
+      {/* <section className="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Próximos Eventos</h2>
 
@@ -259,10 +258,10 @@ export default function FincaPage() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 text-white">
+      {/* <section className="py-16 bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">¿Listo para una Experiencia Transformadora?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -281,7 +280,7 @@ export default function FincaPage() {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
