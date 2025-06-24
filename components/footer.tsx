@@ -14,17 +14,21 @@ const TikTokIcon = () => (
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-950 text-gray-300">
       <div className="container mx-auto px-4 py-10 text-center">
         {/* Logo y nombre */}
         <div className="flex justify-center items-center space-x-2 mb-4">
-          <Church className="h-8 w-8 text-white-700" />
-          <span className="text-xl font-bold">Iglesia Centro Cristiano</span>
+          <img
+              src="/imagenes/logo1.png" 
+              alt="Logo MCC"
+              className="h-8 w-8 object-contain"
+            />
+          <span className="text-xl font-bold">Ministerio Centro Cristiano</span>
         </div>
 
         {/* Descripción */}
         <p className="max-w-xl mx-auto text-gray-400 mb-6">
-          Una comunidad de fe dedicada a servir a Dios y a nuestra comunidad con amor y esperanza.
+          Una comunidad de servicio y devoción, que desea agradar al Espíritu Santo.
         </p>
 
         {/* Redes sociales */}
@@ -44,9 +48,10 @@ export default function Footer() {
         </div>
 
         {/* Marca de agua */}
-        <div className="mt-6 text-sm text-gray-500">
+        <div className="mt-6 text-sm text-black-500">
           &copy; {new Date().getFullYear()} Iglesia Centro Cristiano. Todos los derechos reservados.
         </div>
+      
       </div>
     </footer>
   )
