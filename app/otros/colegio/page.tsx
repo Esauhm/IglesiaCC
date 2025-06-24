@@ -122,7 +122,7 @@ export default function ColegioPage() {
                 {/* Imagen */}
                 <div className="relative flex items-center justify-center bg-gray-100 p-4">
                   <img
-                    src="/imagenes/colegio3.jpg"
+                    src="/imagenes/colegio4.jpg"
                     alt="Instalaciones del Colegio"
                     className="w-full h-auto max-h-[500px] object-contain"
                   />
