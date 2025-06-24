@@ -105,20 +105,36 @@ export default function Ubicacion() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Horarios de Culto</h2>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* Culto de Oración */}
             <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center">
                 <Clock className="h-12 w-12 text-blue-700 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">Culto Dominical</CardTitle>
-                <CardDescription>Domingos</CardDescription>
+                <CardTitle className="text-blue-900">Culto de Oración</CardTitle>
+                <CardDescription>Lunes</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-2xl font-bold text-blue-900 mb-2">9:00 AM</p>
-                <p className="text-gray-600 mb-4">Culto general, contamos con escuela biblica para niños.</p>
-                <p className="text-sm text-gray-500">Duración: 2 horas</p>
+                <p className="text-2xl font-bold text-blue-900 mb-2">6:00 PM</p>
+                <p className="text-gray-600 mb-4">Tiempo especial para buscar la presencia de Dios.</p>
+                <p className="text-sm text-gray-500">Duración: 1 hora</p>
               </CardContent>
             </Card>
 
+            {/* Altar Familiar */}
+            <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center">
+                <Clock className="h-12 w-12 text-blue-700 mx-auto mb-2" />
+                <CardTitle className="text-blue-900">Altar Familiar</CardTitle>
+                <CardDescription>Lunes</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-2xl font-bold text-blue-900 mb-2">En casa</p>
+                <p className="text-gray-600 mb-4">Oración y reflexión familiar en cada hogar.</p>
+                <p className="text-sm text-gray-500">Flexible</p>
+              </CardContent>
+            </Card>
+
+            {/* Culto de Departamentos */}
             <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center">
                 <Clock className="h-12 w-12 text-blue-700 mx-auto mb-2" />
@@ -127,21 +143,50 @@ export default function Ubicacion() {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-2xl font-bold text-blue-900 mb-2">6:00 PM</p>
-                <p className="text-gray-600 mb-4">Enseñanza bíblica por edades.</p>
+                <p className="text-gray-600 mb-4">Reunión por grupos (jóvenes, niños, adultos).</p>
                 <p className="text-sm text-gray-500">Duración: 1:30 horas</p>
               </CardContent>
             </Card>
 
+            {/* Estudio Bíblico */}
             <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center">
                 <Clock className="h-12 w-12 text-blue-700 mx-auto mb-2" />
-                <CardTitle className="text-blue-900">Culto General</CardTitle>
+                <CardTitle className="text-blue-900">Estudio Bíblico</CardTitle>
                 <CardDescription>Jueves</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-2xl font-bold text-blue-900 mb-2">6:00 PM</p>
-                <p className="text-gray-600 mb-4">Servicio de enseñanza de doctrinas de la palabra de Dios.</p>
-                <p className="text-sm text-gray-500">Duración: 1.30 horas</p>
+                <p className="text-gray-600 mb-4">Doctrina y formación espiritual.</p>
+                <p className="text-sm text-gray-500">Duración: 1:30 horas</p>
+              </CardContent>
+            </Card>
+
+            {/* Células de Crecimiento */}
+            <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center">
+                <Clock className="h-12 w-12 text-blue-700 mx-auto mb-2" />
+                <CardTitle className="text-blue-900">Células de Crecimiento</CardTitle>
+                <CardDescription>Mié / Sáb / Dom</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-2xl font-bold text-blue-900 mb-2">Por las tardes</p>
+                <p className="text-gray-600 mb-4">Reuniones en casas para compartir la palabra.</p>
+                <p className="text-sm text-gray-500">Duración: 1.5 horas aprox.</p>
+              </CardContent>
+            </Card>
+
+            {/* Culto Dominical */}
+            <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center">
+                <Clock className="h-12 w-12 text-blue-700 mx-auto mb-2" />
+                <CardTitle className="text-blue-900">Culto Dominical</CardTitle>
+                <CardDescription>Domingo</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-2xl font-bold text-blue-900 mb-2">9:00 AM</p>
+                <p className="text-gray-600 mb-4">Alabanza, adoración y mensaje pastoral.</p>
+                <p className="text-sm text-gray-500">Duración: 2 horas</p>
               </CardContent>
             </Card>
           </div>
@@ -149,7 +194,8 @@ export default function Ubicacion() {
       </section>
 
 
-  
+
+
     </div>
   )
 }

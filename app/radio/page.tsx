@@ -20,7 +20,7 @@ export default function RadioPage() {
 
         <div className="relative z-10 container mx-auto h-full flex flex-col items-center justify-center px-4 text-center">
           <Radio className="h-20 w-20 mb-6 text-blue-200" />
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">Radio Shabach</h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">Radio Shabach 93.3 FM</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
             Música cristiana, predicaciones y programas que edifican tu fe las 24 horas del día
           </p>
@@ -39,11 +39,12 @@ export default function RadioPage() {
       <section id="info" className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Tu Estación de Radio Cristiana</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">LA ESTACIÓN DE LA VICTORIA</h2>
             <p className="text-lg text-gray-600">
-              Radio Shabach es nuestro ministerio radial que lleva el mensaje de esperanza y amor de El Espiritu Santo a miles de
-              hogares. Transmitimos música cristiana contemporánea, predicaciones inspiradoras y programas que
-              fortalecen la fe de toda la familia.
+              Radio Shabach 93.3 FM es nuestro ministerio radial que desde 1997 lleva el mensaje de salvación,
+              amor y esperanza desde Santa Ana, El Salvador a todo el mundo. Nuestro deseo es contagiar del poder
+              Espíritu Santo a nuestros oyentes. Transmitimos música cristiana contemporánea, predicaciones inspiradoras
+              y programas que fortalecen la fe de toda la familia.
             </p>
           </div>
 
@@ -86,6 +87,33 @@ export default function RadioPage() {
           </div>
         </div>
       </section>
+
+      {/* Descarga la App */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Descarga Nuestra App</h2>
+          <p className="text-lg text-gray-600 mb-10">
+            Lleva Radio Shabach contigo a donde vayas. Disponible para Android y acceso web en iOS y PC.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a href="https://play.google.com/store/apps/details?id=net.onlineradioapps.shabach933fm" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/imagenes/playstore.png"
+                alt="Disponible en Google Play"
+                className="h-16"
+              />
+            </a>
+            <a href="https://laestaciondelavictoria.net/pwa/#/home" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/imagenes/badge-pwa.png"
+                alt="Web App"
+                className="h-16"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
 
 
     </div>
