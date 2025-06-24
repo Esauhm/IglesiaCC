@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ministeriocc.com
+
+# Sitemaps
+Sitemap: https://ministeriocc.com/sitemap.xml
