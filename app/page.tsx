@@ -1,10 +1,12 @@
 "use client"
 
-import { Users, Heart, Book, HandIcon as Hands } from "lucide-react"
+import { Users, MapPin, Building, Heart, Book, HandIcon as Hands } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useState } from "react"
 import { PlayCircle } from "lucide-react"
-import { CalendarDays, BookOpen, Home, Cross, Clock } from "lucide-react";
+import { BookOpen, Home, Cross, Clock } from "lucide-react";
+
+
 
 
 type VideoCardProps = {
@@ -37,6 +39,76 @@ const schedule = {
     { icon: <Cross className="w-4 h-4 inline mr-1" />, name: "Culto Dominical", hour: "09:00 AM" },
   ],
 };
+
+const celulas = [
+  {
+    nombre: "Célula 1",
+    ubicacion: "Familia Salazar",
+    direccion: "Urb. Arizona, contiguo a Parque Jardín Las Flores",
+    horario: "Viernes / 6:30 PM",
+    lider: "Marlene Amaya de López",
+    descripcion: "Reunión en hogar para crecimiento y comunión espiritual.",
+    icon: Home,
+    color: "blue",
+    imagen: "/imagenes/c1.jpeg",
+  },
+  {
+    nombre: "Célula 2",
+    ubicacion: "Familia Colocho",
+    direccion: "Cantón La Empalizada, Carretera al Porvenir.",
+    horario: "Sábado / 5:00 PM",
+    lider: "Odilio López",
+    descripcion: "Encuentro en comunidad para fortalecer la fe.",
+    icon: Building,
+    color: "navy",
+    imagen: "/imagenes/c2.jpeg",
+  },
+  {
+    nombre: "Célula 3",
+    ubicacion: "Familia de Carlos Flores",
+    direccion: "Caserío Copinolito, abajo de la Colonia Santa Leonor.",
+    horario: "Viernes / 6:30 PM",
+    lider: "Jorge García",
+    descripcion: "Célula familiar centrada en la enseñanza bíblica.",
+    icon: Home,
+    color: "blue",
+    imagen: "/imagenes/c3.jpeg",
+  },
+  {
+    nombre: "Célula 4",
+    ubicacion: "Familia Amaya",
+    direccion: "Urb. San Fernando, una cuadra abajo de multifamiliares Atlás.",
+    horario: "Miércoles / 6:30 PM",
+    lider: "Marcos Amaya",
+    descripcion: "Estudio bíblico con familias del sector San Fernando.",
+    icon: Building,
+    color: "blue",
+    imagen: "/imagenes/c4.jpeg",
+  },
+  {
+    nombre: "Célula 5",
+    ubicacion: "Familia Ortíz",
+    direccion: "10 Calle Poniente, entre 18/16 Av. Norte, Casa #40",
+    horario: "Sábados / 4:30 PM",
+    lider: "Claudia de Ortíz",
+    descripcion: "Encuentro para familias.",
+    icon: Home,
+    color: "navy",
+    imagen: "/imagenes/c5.jpeg",
+  },
+  {
+    nombre: "Célula 6",
+    ubicacion: "Familia de Héctor Morán",
+    direccion: "Cantón Caña Brava, Km. 54, Calle Nueva a San Salvador.",
+    horario: "Miércoles / 5:30 PM",
+    lider: "Odilio López",
+    descripcion: "Célula enfocada en la Palabra y comunión familiar.",
+    icon: Building,
+    color: "blue",
+    imagen: "/imagenes/c6.jpeg",
+  },
+]
+
 
 function VideoCard({ previewImage, videoId }: VideoCardProps) {
   const [play, setPlay] = useState(false)
@@ -160,44 +232,86 @@ export default function HomePage() {
         </section>
 
 
-        <section className="py-13 px-4 max-w-7xl mx-auto">
+        {/* Lista de Células */}
+        <section className="py-16 ">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">Nuestras Células</h2>
 
-          <p className="text-center text-gray-600 mb-12">Consulta rápidamente las actividades de cada día</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {celulas.map((celula, index) => {
+                const IconComponent = celula.icon
+                const colorClasses = {
+                  blue: {
+                    border: "border-blue-200",
+                    icon: "text-blue-700",
+                    title: "text-blue-900",
+                    button: "bg-blue-700 hover:bg-blue-800",
+                  },
+                  navy: {
+                    border: "border-blue-300",
+                    icon: "text-blue-800",
+                    title: "text-blue-950",
+                    button: "bg-blue-800 hover:bg-blue-900",
+                  },
+                }
 
-          <div className="overflow-x-auto">
-            <div className="grid grid-cols-7 min-w-[800px] bg-white border rounded-xl shadow">
-              {Object.entries(schedule).map(([day, activities]) => (
-                <div key={day} className="border-r last:border-r-0 px-4 py-6">
-                  <h3 className="font-semibold text-lg text-blue-900 mb-4 text-center">{day}</h3>
-                  {activities.length > 0 ? (
-                    <ul className="space-y-3 text-sm text-gray-700">
-                      {activities.map((activity, index) => (
-                        <li key={index} className="flex items-start">
-                          {activity.icon}
-                          <span>
-                            {activity.name}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="text-center text-gray-400 text-sm">—</p>
-                  )}
-                </div>
-              ))}
+                const colors = colorClasses[celula.color as keyof typeof colorClasses]
+
+                return (
+                  <div
+                    key={index}
+                    className="relative w-full h-[350px] sm:h-[360px] [transform-style:preserve-3d] transition-transform duration-700 hover:[transform:rotateY(180deg)] cursor-pointer"
+                  >
+                    {/* Frente */}
+                    <div className="absolute inset-0 bg-white rounded-xl shadow-md border p-4 flex flex-col justify-start items-center [backface-visibility:hidden]">
+                      <div className="flex items-center gap-3 mb-2">
+                        <IconComponent className={`h-6 w-6 ${colors.icon}`} />
+                        <h3 className={`text-lg font-semibold ${colors.title}`}>{celula.nombre}</h3>
+                      </div>
+                      <img
+                        src={celula.imagen}
+                        alt={`Imagen de ${celula.nombre}`}
+                        className="w-full h-full object-cover rounded-md shadow"
+                      />
+                      <p className="text-sm text-gray-600 mt-2 text-center font-medium">{celula.ubicacion}</p>
+                    </div>
+
+                    {/* Reverso */}
+                    <div className="absolute inset-0 bg-white rounded-xl shadow-md border p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                      <div className="space-y-3 mb-4 text-sm text-gray-700">
+                        <div className="flex items-center gap-2">
+                          <MapPin className="h-4 w-4 text-blue-600" />
+                          <span>{celula.direccion}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock className="h-4 w-4 text-blue-600" />
+                          <span>{celula.horario}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Users className="h-4 w-4 text-blue-600" />
+                          <span>Líder: {celula.lider}</span>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600">{celula.descripcion}</p>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
 
 
+
         {/* Sección de Videos */}
         <section className="py-16">
-          <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 relative h-[400px]">
+          <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center text-gray-900">
               Videos de la Iglesia
             </h2>
 
-            <div className="relative w-full h-full flex justify-center items-center">
+            {/* Desktop (abanico) */}
+            <div className="hidden sm:flex relative w-full h-[400px] justify-center items-center">
               {[0, 1, 2, 3].map((i) => (
                 <div
                   key={i}
@@ -220,8 +334,26 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+
+            {/* Mobile (lista vertical) */}
+            <div className="flex flex-col sm:hidden gap-6 items-center">
+              {[0, 1, 2, 3].map((i) => (
+                <div key={i} className="w-72 shadow-lg rounded-xl overflow-hidden">
+                  <VideoCard
+                    previewImage={`/imagenes/i${4 - i}.jpeg`}
+                    videoId={[
+                      '1VNo8971RZJWnGGXKlK9qMyzDWRyDnnye',
+                      '1VTGkiwb8ZBUbNO7uQtaDRzm4np2IF36d',
+                      '1VQCBEHk26m746N0KNt99YnpTS9F1R0Wb',
+                      '1VOZ8QUTiY-LIt3evG2upHdhEXU5MLzVc'
+                    ][i]}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
+
 
 
 
@@ -245,8 +377,8 @@ export default function HomePage() {
               </div>
 
               {/* Texto */}
-              <div className="text-gray-600 prose prose-lg max-w-none">
-                <p className="mb-6 ">
+              <div className="text-gray-600 prose prose-lg max-w-none text-justify">
+                <p className="mb-6">
                   Nuestra iglesia fue fundada con el propósito de crear una comunidad centrada en el servicio y en la búsqueda de Dios. Desde sus inicios, ha sido un espacio donde se predica fielmente la Palabra de Dios y se enseña sobre la persona del Espíritu Santo, guiando a las personas a tener una relación viva y transformadora con Él.
                 </p>
                 <p className="mb-6">
@@ -272,8 +404,6 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </div>
-
-            
           </div>
         </section>
 
@@ -321,7 +451,7 @@ export default function HomePage() {
               <Card className="flex flex-col justify-between text-center bg-white border border-blue-100 shadow-md hover:shadow-xl transition-all duration-300 w-full max-w-sm rounded-xl">
                 <CardHeader>
                   <img
-                    src="/imagenes/Pastor2.png"
+                    src="/imagenes/Pastor.jpeg"
                     alt="Pastor Marcos Antonio Amaya Lizama"
                     className="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-white shadow-md"
                   />
@@ -345,7 +475,7 @@ export default function HomePage() {
               <Card className="flex flex-col justify-between text-center bg-white border border-blue-100 shadow-md hover:shadow-xl transition-all duration-300 w-full max-w-sm rounded-xl">
                 <CardHeader>
                   <img
-                    src="/imagenes/Pastora2.png"
+                    src="/imagenes/Pastora.jpeg"
                     alt="Pastora Gloria Amaya"
                     className="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-white shadow-md"
                   />

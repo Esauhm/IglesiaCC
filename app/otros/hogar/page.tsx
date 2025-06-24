@@ -18,7 +18,7 @@ export default function HogarPage() {
 
       </section>
 
-            {/* Call to Action - Apadrina un Pastor */}
+      {/* Call to Action - Apadrina un Pastor */}
       <section className="py-16 bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Apadrina un Pastor</h2>
@@ -54,12 +54,13 @@ export default function HogarPage() {
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 lg:p-12">
                   <h2 className="text-3xl font-bold text-blue-900 mb-6">Nuestro Compromiso</h2>
-                  <p className="text-gray-600 mb-6 text-lg">
+                  <p className="text-gray-600 mb-6 text-lg text-justify">
                     El Hogar de Protección al Pastor Anciano es un ministerio especial que nace del corazón de nuestra
                     iglesia para honrar y cuidar a aquellos pastores que han dedicado su vida entera al servicio de Dios
                     y su pueblo. Creemos que merecen vivir sus años dorados con dignidad, amor y el cuidado que tanto
                     dieron.
                   </p>
+
                   <div className="space-y-4 mb-6">
                     <div className="flex items-center gap-3">
                       <Heart className="h-6 w-6 text-blue-700" />
@@ -213,7 +214,7 @@ export default function HogarPage() {
                 </CardHeader>
                 <CardContent>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d297.78480007046704!2d-89.61486815742968!3d13.949806899325022!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f62e95845628a77%3A0xef2babd4713a742d!2sHogar%20de%20Protecci%C3%B3n%20al%20Pastor%20Anciano!5e1!3m2!1ses-419!2sgt!4v1750723646000!5m2!1ses-419!2sgt" 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d297.78480007046704!2d-89.61486815742968!3d13.949806899325022!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f62e95845628a77%3A0xef2babd4713a742d!2sHogar%20de%20Protecci%C3%B3n%20al%20Pastor%20Anciano!5e1!3m2!1ses-419!2sgt!4v1750723646000!5m2!1ses-419!2sgt"
                     width="100%"
                     height="384"
                     style={{ border: 0 }}
