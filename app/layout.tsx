@@ -41,7 +41,7 @@ export default function RootLayout({
               "url": "https://ministeriocc.com",
               "logo": "https://ministeriocc.com/imagenes/logo1.ico"
             }
-  </script>
+          </script>
       </head>
       <body className={inter.className}>
         <Header />
